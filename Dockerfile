@@ -1,4 +1,4 @@
-FROM pypi/eve
+FROM python:2-onbuild
 
 RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 
