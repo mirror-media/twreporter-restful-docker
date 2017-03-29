@@ -23,6 +23,7 @@ RUN buildDeps=' \
     && pip install Eve \
     && cp ../settings.py ../tr-projects-rest/settings.py \
 	&& ls /
+	&& pwd
 
 EXPOSE 8080
 CMD ["python", "/tr-projects-rest/server.py"]
