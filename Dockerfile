@@ -21,7 +21,8 @@ RUN buildDeps=' \
     && cd tr-projects-rest/ \
     && pip install flask \
     && pip install Eve \
-    && cp /settings.py tr-projects-rest/settings.py
+	&& ls \
+    && cp settings.py tr-projects-rest/settings.py
 
 EXPOSE 8080
 CMD ["python", "/tr-projects-rest/server.py"]
