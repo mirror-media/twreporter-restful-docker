@@ -22,7 +22,7 @@ RUN buildDeps=' \
     && pip install flask \
     && pip install Eve \
     && cp ../settings.py ../tr-projects-rest/settings.py \
-	&& ls /
+	&& ls / \
 	&& pwd
 
 EXPOSE 8080
