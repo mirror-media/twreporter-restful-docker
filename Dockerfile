@@ -18,7 +18,7 @@ RUN buildDeps=' \
     && apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
     && pip install --upgrade pip \
     && git clone https://github.com/mirror-media/tr-projects-rest.git \
-    && cd /tr-projects-rest/ \
+    && cd tr-projects-rest/ \
     && pip install flask \
     && pip install Eve \
     && cp /settings.py /tr-projects-rest/settings.py
