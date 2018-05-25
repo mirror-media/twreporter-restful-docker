@@ -3,10 +3,11 @@ FROM python:2-onbuild
 RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 
 COPY settings.py /settings.py
-
+COPY tr-projects-rest.ini /tr-projects-rest.ini
+#sudo uwsgi --ini tr-projects-rest.ini
 RUN set -x \
     && apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
+    && apt-get install -y --no-install-recommends curl ca-certificates nginx \
     && apt-get install -y git
 
 RUN buildDeps=' \
@@ -21,7 +22,10 @@ RUN buildDeps=' \
     && cd tr-projects-rest/ \
     && pip install flask \
     && pip install Eve \
-    && cp ../settings.py ../tr-projects-rest/settings.py 
+	&& pip install uwsgi \
+    && cp ../settings.py ../tr-projects-rest/settings.py \
+	&& cp ../tr-projects-rest.ini ../tr-projects-rest/tr-projects-rest.ini \
+    && uwsgi --ini tr-projects-rest.ini
 
 EXPOSE 8080
-CMD ["python", "/usr/src/app/tr-projects-rest/server.py"]
+CMD ["nginx"]
